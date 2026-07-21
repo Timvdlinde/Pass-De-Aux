@@ -1,26 +1,622 @@
 @import "tailwindcss";
 
+/* ── Pass De Aux — nachtrit-tokens ─────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --asfalt: #0f1014; /* wegdek */
+  --nacht: #171921; /* paneel */
+  --lijn: #262935; /* randen */
+  --amber: #ffb03a; /* dashboardgloed */
+  --amber-dim: #c9821f;
+  --signaal: #ff4a2d; /* live-punt */
+  --bot: #f2ede3; /* tekst */
+  --rook: #9094a3; /* gedempte tekst */
+
+  --display: var(--font-archivo), system-ui, sans-serif;
+  --mono: var(--font-mono), ui-monospace, monospace;
+
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --measure: 34rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--asfalt);
+  color: var(--bot);
+  font-family: var(--display);
+  font-variation-settings: "wdth" 100;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--asfalt);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.site {
+  position: relative;
+  overflow-x: clip;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Aux-kabel ──────────────────────────────────────────────── */
+.aux-cable {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.aux-cable svg {
+  display: block;
+  width: 100%;
+}
+
+.cable-sleeve {
+  stroke: var(--lijn);
+  stroke-width: 5;
+  fill: none;
+}
+
+.cable-glow {
+  stroke: var(--amber);
+  stroke-width: 10;
+  fill: none;
+  opacity: 0.16;
+  filter: blur(6px);
+}
+
+.cable-live {
+  stroke: var(--amber);
+  stroke-width: 3.5;
+  fill: none;
+  stroke-linecap: round;
+}
+
+@media (max-width: 820px) {
+  .aux-cable {
+    display: none;
+  }
+}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem var(--gutter) 5rem;
+  background:
+    radial-gradient(
+      55rem 30rem at 50% 118%,
+      rgba(255, 176, 58, 0.17),
+      transparent 70%
+    ),
+    radial-gradient(
+      40rem 22rem at 85% -10%,
+      rgba(38, 41, 53, 0.55),
+      transparent 70%
+    );
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.badge {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  border: 1px solid var(--lijn);
+  padding: 0.5rem 0.875rem;
+  border-radius: 999px;
+  background: rgba(23, 25, 33, 0.7);
+}
+
+.hero-nav {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.hero-nav a {
+  text-decoration: none;
+  color: var(--rook);
+  transition: color 120ms ease;
+}
+
+.hero-nav a:hover {
+  color: var(--amber);
+}
+
+@media (max-width: 640px) {
+  .hero-nav {
+    display: none;
+  }
+}
+
+.hero-main {
+  margin: auto 0;
+  padding-top: 3.5rem;
+}
+
+.wordmark {
+  margin: 0;
+  font-variation-settings: "wdth" 125;
+  font-weight: 900;
+  font-size: clamp(4.25rem, 17.5vw, 15.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+.wordmark .rij {
+  display: block;
+}
+
+.wordmark .rij-de {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--amber);
+  margin-left: 0.55em;
+}
+
+.wordmark .rij-aux {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.12em;
+}
+
+.jack-dot {
+  width: 0.16em;
+  height: 0.16em;
+  border-radius: 999px;
+  background: var(--amber);
+  box-shadow: 0 0 0.35em rgba(255, 176, 58, 0.8);
+  align-self: center;
+}
+
+.lede {
+  max-width: var(--measure);
+  margin: 2.25rem 0 0;
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  color: var(--rook);
+}
+
+.lede strong {
+  color: var(--bot);
+  font-weight: 600;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 2.25rem;
+}
+
+.knop {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--amber);
+  transition:
+    background 120ms ease,
+    color 120ms ease,
+    transform 120ms ease;
+}
+
+.knop:hover {
+  transform: translateY(-1px);
+}
+
+.knop-vol {
+  background: var(--amber);
+  color: var(--asfalt);
+}
+
+.knop-vol:hover {
+  background: var(--bot);
+  border-color: var(--bot);
+}
+
+.knop-lijn {
+  color: var(--amber);
+}
+
+.knop-lijn:hover {
+  background: rgba(255, 176, 58, 0.12);
+}
+
+.stats {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.5rem;
+  margin: 3.5rem 0 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--lijn);
+  color: var(--rook);
+}
+
+.stats strong {
+  color: var(--bot);
+  font-weight: 500;
+  margin-right: 0.4em;
+}
+
+/* ── Ticker ─────────────────────────────────────────────────── */
+.ticker {
+  overflow: hidden;
+  background: var(--amber);
+  color: var(--asfalt);
+  transform: rotate(-1.2deg);
+  margin: 0 -1rem;
+  border-block: 3px solid var(--asfalt);
+}
+
+.ticker-baan {
+  display: flex;
+  width: max-content;
+  animation: schuif 36s linear infinite;
+}
+
+.ticker-groep {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-variation-settings: "wdth" 62;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 0.45em 0;
+}
+
+.ticker-groep span {
+  padding: 0 0.55em;
+}
+
+.ticker-groep span::after {
+  content: "✦";
+  margin-left: 1.1em;
+  font-size: 0.6em;
+  vertical-align: 0.25em;
+}
+
+@keyframes schuif {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ticker-baan {
+    animation: none;
+  }
+  .knop:hover {
+    transform: none;
+  }
+}
+
+/* ── Panelen ────────────────────────────────────────────────── */
+.panel {
+  padding: clamp(5rem, 10vw, 8.5rem) var(--gutter) 0;
+  max-width: 74rem;
+  margin: 0 auto;
+}
+
+.panel-kop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.panel-kop h2 {
+  margin: 0;
+  font-variation-settings: "wdth" 125;
+  font-weight: 900;
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.panel-kop .mono {
+  color: var(--amber);
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 820px) {
+  .panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel-tekst p {
+  max-width: var(--measure);
+  color: var(--rook);
+  margin: 0 0 1.25rem;
+}
+
+.panel-tekst p strong {
+  color: var(--bot);
+  font-weight: 600;
+}
+
+.embed-kaart {
+  background: var(--nacht);
+  border: 1px solid var(--lijn);
+  border-radius: 16px;
+  padding: 0.75rem;
+}
+
+.embed-kaart iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+}
+
+.tekst-link {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.2em;
+}
+
+.tekst-link:hover {
+  color: var(--bot);
+}
+
+/* ── Gastenlijst ────────────────────────────────────────────── */
+.gasten {
+  margin-top: 3rem;
+}
+
+.gasten-label {
+  color: var(--rook);
+  margin-bottom: 1rem;
+}
+
+.gasten-lijst {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 0.9em;
+  font-variation-settings: "wdth" 62;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: #4b5060;
+}
+
+.gasten-lijst li {
+  transition: color 150ms ease;
+}
+
+.gasten-lijst li:hover {
+  color: var(--amber);
+}
+
+.gasten-lijst li:nth-child(3n + 1) {
+  color: var(--bot);
+}
+
+.gasten-lijst li:nth-child(3n + 1):hover {
+  color: var(--amber);
+}
+
+/* ── Radio ──────────────────────────────────────────────────── */
+.radio-kaart {
+  position: relative;
+  background: var(--nacht);
+  border: 1px solid var(--lijn);
+  border-radius: 16px;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.live-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--signaal);
+  border: 1px solid rgba(255, 74, 45, 0.45);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--signaal);
+  animation: puls 1.6s ease-in-out infinite;
+}
+
+@keyframes puls {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot {
+    animation: none;
+  }
+}
+
+.radio-tijd {
+  margin: 0;
+  font-variation-settings: "wdth" 110;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.radio-tijd em {
+  font-style: normal;
+  color: var(--amber);
+}
+
+.radio-tekst {
+  margin: 0;
+  max-width: var(--measure);
+  color: var(--rook);
+}
+
+.radio-kaart .tekst-link {
+  align-self: flex-start;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.einde {
+  margin-top: clamp(5rem, 10vw, 8.5rem);
+  padding: clamp(4rem, 8vw, 6rem) var(--gutter) 2.5rem;
+  border-top: 1px solid var(--lijn);
+  background: radial-gradient(
+    45rem 24rem at 50% 0%,
+    rgba(255, 176, 58, 0.08),
+    transparent 70%
+  );
+}
+
+.einde-binnen {
+  max-width: 74rem;
+  margin: 0 auto;
+}
+
+.einde h2 {
+  margin: 0 0 2.5rem;
+  font-variation-settings: "wdth" 125;
+  font-weight: 900;
+  font-size: clamp(2.75rem, 9vw, 7rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.aux-in {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--rook);
+  border: 1px solid var(--lijn);
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.aux-in::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 2px solid var(--amber);
+}
+
+.sociale-lijst {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+}
+
+.sociale-lijst a {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--bot);
+}
+
+.sociale-lijst a:hover {
+  color: var(--amber);
+}
+
+.kleine-print {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--lijn);
+  color: var(--rook);
+}
+
+.kleine-print a {
+  color: inherit;
+}
+
+.kleine-print a:hover {
+  color: var(--amber);
 }
