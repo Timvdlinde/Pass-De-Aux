@@ -1,16 +1,15 @@
 @import "tailwindcss";
 
-/* ── Pass De Aux — brand-tokens (leger-groen & crème, uit de playlist-cover) ── */
+/* ── Pass De Aux — brand-tokens uit het logo: navy speakerbox op cyaan ── */
 :root {
-  --asfalt: #14150d; /* olijfzwart wegdek */
-  --nacht: #1c1e14; /* paneel */
-  --lijn: #2c2f1f; /* randen */
-  --leger: #5a6040; /* het bannergroen van de wordmark */
-  --khaki: #bfb093; /* badge-khaki, accenten */
-  --creme: #efe8d8; /* wordmark-wit */
+  --diep: #04182b; /* diepste navy, de achtergrond */
+  --paneel: #062c4e; /* het navy van de speakerbox */
+  --lijn: #0e4470; /* randen */
+  --cyaan: #01d4ef; /* de cyaan van het logo */
+  --inkt: #04182b; /* tekst óp cyaan */
   --signaal: #ff4a2d; /* live-punt */
-  --bot: #f2ede3; /* tekst */
-  --rook: #97968a; /* gedempte tekst */
+  --bot: #f2f7fa; /* tekst */
+  --rook: #7fa3be; /* gedempte tekst */
 
   --display: var(--font-archivo), system-ui, sans-serif;
   --mono: var(--font-mono), ui-monospace, monospace;
@@ -29,7 +28,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--asfalt);
+  background: var(--diep);
   color: var(--bot);
   font-family: var(--display);
   font-variation-settings: "wdth" 100;
@@ -39,8 +38,8 @@ body {
 }
 
 ::selection {
-  background: var(--khaki);
-  color: var(--asfalt);
+  background: var(--cyaan);
+  color: var(--inkt);
 }
 
 a {
@@ -48,7 +47,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--khaki);
+  outline: 2px solid var(--cyaan);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -90,15 +89,15 @@ a {
 }
 
 .cable-glow {
-  stroke: var(--khaki);
+  stroke: var(--cyaan);
   stroke-width: 10;
   fill: none;
-  opacity: 0.14;
+  opacity: 0.15;
   filter: blur(6px);
 }
 
 .cable-live {
-  stroke: var(--creme);
+  stroke: var(--cyaan);
   stroke-width: 3.5;
   fill: none;
   stroke-linecap: round;
@@ -119,12 +118,12 @@ a {
   background:
     radial-gradient(
       55rem 30rem at 50% 118%,
-      rgba(90, 96, 64, 0.4),
+      rgba(1, 212, 239, 0.12),
       transparent 70%
     ),
     radial-gradient(
       40rem 22rem at 85% -10%,
-      rgba(44, 47, 31, 0.55),
+      rgba(6, 44, 78, 0.85),
       transparent 70%
     );
 }
@@ -137,13 +136,24 @@ a {
 }
 
 .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65em;
   font-family: var(--mono);
   font-size: 0.8125rem;
   letter-spacing: 0.18em;
+  text-transform: uppercase;
   border: 1px solid var(--lijn);
-  padding: 0.5rem 0.875rem;
+  padding: 0.4rem 0.875rem 0.4rem 0.4rem;
   border-radius: 999px;
-  background: rgba(28, 30, 20, 0.7);
+  background: rgba(6, 44, 78, 0.6);
+}
+
+.badge img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
 }
 
 .hero-nav {
@@ -158,7 +168,7 @@ a {
 }
 
 .hero-nav a:hover {
-  color: var(--khaki);
+  color: var(--cyaan);
 }
 
 @media (max-width: 640px) {
@@ -170,15 +180,39 @@ a {
 .hero-main {
   margin: auto 0;
   padding-top: 3.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3rem;
+  align-items: center;
 }
 
+.hero-logo img {
+  width: clamp(240px, 26vw, 380px);
+  height: auto;
+  border-radius: 28px;
+  transform: rotate(4deg);
+  box-shadow:
+    0 30px 60px rgba(0, 7, 20, 0.55),
+    0 0 80px rgba(1, 212, 239, 0.18);
+}
+
+@media (max-width: 980px) {
+  .hero-main {
+    grid-template-columns: 1fr;
+  }
+  .hero-logo {
+    display: none;
+  }
+}
+
+/* Wordmark in de condensed kapitalen van het logo */
 .wordmark {
   margin: 0;
-  font-variation-settings: "wdth" 125;
+  font-variation-settings: "wdth" 62;
   font-weight: 900;
-  font-size: clamp(4.25rem, 17.5vw, 15.5rem);
-  line-height: 0.86;
-  letter-spacing: -0.015em;
+  font-size: clamp(5.5rem, 21vw, 19rem);
+  line-height: 0.82;
+  letter-spacing: 0;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -188,24 +222,28 @@ a {
   display: block;
 }
 
-.wordmark .rij-de {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--khaki);
-  margin-left: 0.55em;
-}
-
 .wordmark .rij-aux {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.12em;
+  align-items: center;
+  gap: 0.07em;
+}
+
+/* het kleine DE tussen twee lijnen, zoals op de box */
+.de-blok {
+  font-size: 0.26em;
+  line-height: 1;
+  border-block: 0.11em solid var(--cyaan);
+  padding: 0.14em 0.03em;
+  letter-spacing: 0.04em;
+  color: var(--cyaan);
 }
 
 .jack-dot {
-  width: 0.16em;
-  height: 0.16em;
+  width: 0.14em;
+  height: 0.14em;
   border-radius: 999px;
-  background: var(--khaki);
-  box-shadow: 0 0 0.35em rgba(191, 176, 147, 0.8);
+  background: var(--cyaan);
+  box-shadow: 0 0 0.35em rgba(1, 212, 239, 0.8);
   align-self: center;
 }
 
@@ -236,7 +274,7 @@ a {
   text-decoration: none;
   padding: 0.9rem 1.5rem;
   border-radius: 999px;
-  border: 1px solid var(--leger);
+  border: 1px solid var(--cyaan);
   transition:
     background 120ms ease,
     color 120ms ease,
@@ -249,23 +287,22 @@ a {
 }
 
 .knop-vol {
-  background: var(--leger);
-  color: var(--creme);
+  background: var(--cyaan);
+  color: var(--inkt);
+  font-weight: 500;
 }
 
 .knop-vol:hover {
-  background: var(--creme);
-  border-color: var(--creme);
-  color: var(--asfalt);
+  background: var(--bot);
+  border-color: var(--bot);
 }
 
 .knop-lijn {
-  color: var(--khaki);
-  border-color: var(--khaki);
+  color: var(--cyaan);
 }
 
 .knop-lijn:hover {
-  background: rgba(191, 176, 147, 0.12);
+  background: rgba(1, 212, 239, 0.12);
 }
 
 .stats {
@@ -285,14 +322,14 @@ a {
   margin-right: 0.4em;
 }
 
-/* ── Ticker — de banner van de wordmark ─────────────────────── */
+/* ── Ticker — cyaan als het logovlak ────────────────────────── */
 .ticker {
   overflow: hidden;
-  background: var(--leger);
-  color: var(--creme);
+  background: var(--cyaan);
+  color: var(--inkt);
   transform: rotate(-1.2deg);
   margin: 0 -1rem;
-  border-block: 3px solid var(--asfalt);
+  border-block: 3px solid var(--diep);
 }
 
 .ticker-baan {
@@ -360,16 +397,16 @@ a {
 
 .panel-kop h2 {
   margin: 0;
-  font-variation-settings: "wdth" 125;
+  font-variation-settings: "wdth" 62;
   font-weight: 900;
-  font-size: clamp(2.25rem, 5.5vw, 4rem);
-  line-height: 1;
+  font-size: clamp(2.75rem, 6.5vw, 5rem);
+  line-height: 0.95;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.005em;
 }
 
 .panel-kop .mono {
-  color: var(--khaki);
+  color: var(--cyaan);
 }
 
 .panel-grid {
@@ -397,7 +434,7 @@ a {
 }
 
 .embed-kaart {
-  background: var(--nacht);
+  background: var(--paneel);
   border: 1px solid var(--lijn);
   border-radius: 16px;
   padding: 0.75rem;
@@ -415,14 +452,14 @@ a {
   font-size: 0.8125rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--khaki);
+  color: var(--cyaan);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
   padding-bottom: 0.2em;
 }
 
 .tekst-link:hover {
-  color: var(--creme);
+  color: var(--bot);
 }
 
 /* ── Gastenlijst ────────────────────────────────────────────── */
@@ -447,7 +484,7 @@ a {
   font-size: clamp(1.75rem, 4.5vw, 3.25rem);
   line-height: 1.15;
   text-transform: uppercase;
-  color: #565a48;
+  color: #2c5b81;
 }
 
 .gasten-lijst li {
@@ -455,7 +492,7 @@ a {
 }
 
 .gasten-lijst li:hover {
-  color: var(--khaki);
+  color: var(--cyaan);
 }
 
 .gasten-lijst li:nth-child(3n + 1) {
@@ -463,13 +500,13 @@ a {
 }
 
 .gasten-lijst li:nth-child(3n + 1):hover {
-  color: var(--khaki);
+  color: var(--cyaan);
 }
 
 /* ── Radio ──────────────────────────────────────────────────── */
 .radio-kaart {
   position: relative;
-  background: var(--nacht);
+  background: var(--paneel);
   border: 1px solid var(--lijn);
   border-radius: 16px;
   padding: clamp(1.75rem, 4vw, 3rem);
@@ -514,16 +551,16 @@ a {
 
 .radio-tijd {
   margin: 0;
-  font-variation-settings: "wdth" 110;
+  font-variation-settings: "wdth" 75;
   font-weight: 800;
   font-size: clamp(1.75rem, 4vw, 3rem);
-  line-height: 1.1;
+  line-height: 1.05;
   text-transform: uppercase;
 }
 
 .radio-tijd em {
   font-style: normal;
-  color: var(--khaki);
+  color: var(--cyaan);
 }
 
 .radio-tekst {
@@ -543,7 +580,7 @@ a {
   border-top: 1px solid var(--lijn);
   background: radial-gradient(
     45rem 24rem at 50% 0%,
-    rgba(90, 96, 64, 0.22),
+    rgba(1, 212, 239, 0.07),
     transparent 70%
   );
 }
@@ -555,10 +592,10 @@ a {
 
 .einde h2 {
   margin: 0 0 2.5rem;
-  font-variation-settings: "wdth" 125;
+  font-variation-settings: "wdth" 62;
   font-weight: 900;
-  font-size: clamp(2.75rem, 9vw, 7rem);
-  line-height: 0.95;
+  font-size: clamp(3.25rem, 11vw, 8.5rem);
+  line-height: 0.88;
   text-transform: uppercase;
 }
 
@@ -581,7 +618,7 @@ a {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  border: 2px solid var(--khaki);
+  border: 2px solid var(--cyaan);
 }
 
 .sociale-lijst {
@@ -603,7 +640,7 @@ a {
 }
 
 .sociale-lijst a:hover {
-  color: var(--khaki);
+  color: var(--cyaan);
 }
 
 .kleine-print {
@@ -622,5 +659,5 @@ a {
 }
 
 .kleine-print a:hover {
-  color: var(--khaki);
+  color: var(--cyaan);
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import AuxCable from "./components/AuxCable";
 
 const LINKS = {
@@ -47,7 +48,10 @@ export default function Home() {
       <div className="content">
         <header className="hero">
           <div className="hero-top">
-            <span className="badge">Pass De Aux 🌐</span>
+            <span className="badge">
+              <Image src="/logo.png" alt="" width={28} height={28} />
+              Pass De Aux
+            </span>
             <nav className="hero-nav mono" aria-label="Secties">
               <a href="#podcast">Podcast</a>
               <a href="#playlist">Playlist</a>
@@ -56,12 +60,11 @@ export default function Home() {
           </div>
 
           <div className="hero-main">
+            <div className="hero-tekst">
             <h1 className="wordmark">
               <span className="rij">Pass</span>
-              <span className="rij rij-de" aria-hidden="true">
-                de
-              </span>
               <span className="rij rij-aux">
+                <span className="de-blok">de</span>
                 Aux
                 <span className="jack-dot" aria-hidden="true" />
               </span>
@@ -96,6 +99,16 @@ export default function Home() {
                 <strong>Zondag 15:00</strong> nieuwe aflevering
               </li>
             </ul>
+            </div>
+            <div className="hero-logo">
+              <Image
+                src="/logo.png"
+                alt="Pass De Aux logo: een speakerbox"
+                width={360}
+                height={360}
+                priority
+              />
+            </div>
           </div>
         </header>
 
