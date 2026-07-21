@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
-/* ── Pass De Aux — nachtrit-tokens ─────────────────────────── */
+/* ── Pass De Aux — brand-tokens (leger-groen & crème, uit de playlist-cover) ── */
 :root {
-  --asfalt: #0f1014; /* wegdek */
-  --nacht: #171921; /* paneel */
-  --lijn: #262935; /* randen */
-  --amber: #ffb03a; /* dashboardgloed */
-  --amber-dim: #c9821f;
+  --asfalt: #14150d; /* olijfzwart wegdek */
+  --nacht: #1c1e14; /* paneel */
+  --lijn: #2c2f1f; /* randen */
+  --leger: #5a6040; /* het bannergroen van de wordmark */
+  --khaki: #bfb093; /* badge-khaki, accenten */
+  --creme: #efe8d8; /* wordmark-wit */
   --signaal: #ff4a2d; /* live-punt */
   --bot: #f2ede3; /* tekst */
-  --rook: #9094a3; /* gedempte tekst */
+  --rook: #97968a; /* gedempte tekst */
 
   --display: var(--font-archivo), system-ui, sans-serif;
   --mono: var(--font-mono), ui-monospace, monospace;
@@ -38,7 +39,7 @@ body {
 }
 
 ::selection {
-  background: var(--amber);
+  background: var(--khaki);
   color: var(--asfalt);
 }
 
@@ -47,7 +48,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--khaki);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -89,15 +90,15 @@ a {
 }
 
 .cable-glow {
-  stroke: var(--amber);
+  stroke: var(--khaki);
   stroke-width: 10;
   fill: none;
-  opacity: 0.16;
+  opacity: 0.14;
   filter: blur(6px);
 }
 
 .cable-live {
-  stroke: var(--amber);
+  stroke: var(--creme);
   stroke-width: 3.5;
   fill: none;
   stroke-linecap: round;
@@ -118,12 +119,12 @@ a {
   background:
     radial-gradient(
       55rem 30rem at 50% 118%,
-      rgba(255, 176, 58, 0.17),
+      rgba(90, 96, 64, 0.4),
       transparent 70%
     ),
     radial-gradient(
       40rem 22rem at 85% -10%,
-      rgba(38, 41, 53, 0.55),
+      rgba(44, 47, 31, 0.55),
       transparent 70%
     );
 }
@@ -142,7 +143,7 @@ a {
   border: 1px solid var(--lijn);
   padding: 0.5rem 0.875rem;
   border-radius: 999px;
-  background: rgba(23, 25, 33, 0.7);
+  background: rgba(28, 30, 20, 0.7);
 }
 
 .hero-nav {
@@ -157,7 +158,7 @@ a {
 }
 
 .hero-nav a:hover {
-  color: var(--amber);
+  color: var(--khaki);
 }
 
 @media (max-width: 640px) {
@@ -189,7 +190,7 @@ a {
 
 .wordmark .rij-de {
   color: transparent;
-  -webkit-text-stroke: 2px var(--amber);
+  -webkit-text-stroke: 2px var(--khaki);
   margin-left: 0.55em;
 }
 
@@ -203,8 +204,8 @@ a {
   width: 0.16em;
   height: 0.16em;
   border-radius: 999px;
-  background: var(--amber);
-  box-shadow: 0 0 0.35em rgba(255, 176, 58, 0.8);
+  background: var(--khaki);
+  box-shadow: 0 0 0.35em rgba(191, 176, 147, 0.8);
   align-self: center;
 }
 
@@ -235,10 +236,11 @@ a {
   text-decoration: none;
   padding: 0.9rem 1.5rem;
   border-radius: 999px;
-  border: 1px solid var(--amber);
+  border: 1px solid var(--leger);
   transition:
     background 120ms ease,
     color 120ms ease,
+    border-color 120ms ease,
     transform 120ms ease;
 }
 
@@ -247,21 +249,23 @@ a {
 }
 
 .knop-vol {
-  background: var(--amber);
-  color: var(--asfalt);
+  background: var(--leger);
+  color: var(--creme);
 }
 
 .knop-vol:hover {
-  background: var(--bot);
-  border-color: var(--bot);
+  background: var(--creme);
+  border-color: var(--creme);
+  color: var(--asfalt);
 }
 
 .knop-lijn {
-  color: var(--amber);
+  color: var(--khaki);
+  border-color: var(--khaki);
 }
 
 .knop-lijn:hover {
-  background: rgba(255, 176, 58, 0.12);
+  background: rgba(191, 176, 147, 0.12);
 }
 
 .stats {
@@ -281,11 +285,11 @@ a {
   margin-right: 0.4em;
 }
 
-/* ── Ticker ─────────────────────────────────────────────────── */
+/* ── Ticker — de banner van de wordmark ─────────────────────── */
 .ticker {
   overflow: hidden;
-  background: var(--amber);
-  color: var(--asfalt);
+  background: var(--leger);
+  color: var(--creme);
   transform: rotate(-1.2deg);
   margin: 0 -1rem;
   border-block: 3px solid var(--asfalt);
@@ -365,7 +369,7 @@ a {
 }
 
 .panel-kop .mono {
-  color: var(--amber);
+  color: var(--khaki);
 }
 
 .panel-grid {
@@ -411,14 +415,14 @@ a {
   font-size: 0.8125rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--khaki);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
   padding-bottom: 0.2em;
 }
 
 .tekst-link:hover {
-  color: var(--bot);
+  color: var(--creme);
 }
 
 /* ── Gastenlijst ────────────────────────────────────────────── */
@@ -443,7 +447,7 @@ a {
   font-size: clamp(1.75rem, 4.5vw, 3.25rem);
   line-height: 1.15;
   text-transform: uppercase;
-  color: #4b5060;
+  color: #565a48;
 }
 
 .gasten-lijst li {
@@ -451,7 +455,7 @@ a {
 }
 
 .gasten-lijst li:hover {
-  color: var(--amber);
+  color: var(--khaki);
 }
 
 .gasten-lijst li:nth-child(3n + 1) {
@@ -459,7 +463,7 @@ a {
 }
 
 .gasten-lijst li:nth-child(3n + 1):hover {
-  color: var(--amber);
+  color: var(--khaki);
 }
 
 /* ── Radio ──────────────────────────────────────────────────── */
@@ -519,7 +523,7 @@ a {
 
 .radio-tijd em {
   font-style: normal;
-  color: var(--amber);
+  color: var(--khaki);
 }
 
 .radio-tekst {
@@ -539,7 +543,7 @@ a {
   border-top: 1px solid var(--lijn);
   background: radial-gradient(
     45rem 24rem at 50% 0%,
-    rgba(255, 176, 58, 0.08),
+    rgba(90, 96, 64, 0.22),
     transparent 70%
   );
 }
@@ -577,7 +581,7 @@ a {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  border: 2px solid var(--amber);
+  border: 2px solid var(--khaki);
 }
 
 .sociale-lijst {
@@ -599,7 +603,7 @@ a {
 }
 
 .sociale-lijst a:hover {
-  color: var(--amber);
+  color: var(--khaki);
 }
 
 .kleine-print {
@@ -618,5 +622,5 @@ a {
 }
 
 .kleine-print a:hover {
-  color: var(--amber);
+  color: var(--khaki);
 }
