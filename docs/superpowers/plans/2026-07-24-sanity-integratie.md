@@ -32,7 +32,7 @@
 **Interfaces:**
 - Produces: `sanity/env.ts` exporteert `projectId: string`, `dataset: string`, `apiVersion: string`. Latere tasks importeren deze via relatieve paden (bv. `../env` vanuit `sanity/lib/`, `./sanity/env` vanuit de root).
 
-- [ ] **Step 1: Installeer dependencies**
+- [x] **Step 1: Installeer dependencies**
 
 ```bash
 cd /Users/kaiser/WebstormProjects/Pass-De-Aux
@@ -42,7 +42,7 @@ npm install -D vitest@latest
 
 Expected: exit 0, `package.json` bevat de vier nieuwe packages.
 
-- [ ] **Step 2: Controleer Sanity-login**
+- [x] **Step 2: Controleer Sanity-login**
 
 ```bash
 npx sanity@latest projects list 2>&1 | head -5
@@ -50,7 +50,7 @@ npx sanity@latest projects list 2>&1 | head -5
 
 Expected: een tabel met projecten (mag leeg zijn). Als de output een login-fout bevat ("not authenticated" / "You must login"): vraag de gebruiker om `! npx sanity@latest login` te draaien in de sessie (browser-login) en wacht daarop. **Ga niet verder zonder werkende login.**
 
-- [ ] **Step 3: Maak het Sanity-project + production-dataset**
+- [x] **Step 3: Maak het Sanity-project + production-dataset**
 
 ```bash
 npx sanity@latest init --bare --create-project "Pass De Aux" --dataset production
@@ -58,7 +58,7 @@ npx sanity@latest init --bare --create-project "Pass De Aux" --dataset productio
 
 Expected: output bevat `Project ID: <id>` en `Dataset: production`. Noteer het project-ID exact.
 
-- [ ] **Step 4: Schrijf `.env.local` en `.env.example`**
+- [x] **Step 4: Schrijf `.env.local` en `.env.example`**
 
 `.env.local` (vervang `<projectId>` door het ID uit stap 3):
 
@@ -74,7 +74,7 @@ NEXT_PUBLIC_SANITY_PROJECT_ID=vul-project-id-in
 NEXT_PUBLIC_SANITY_DATASET=production
 ```
 
-- [ ] **Step 5: Schrijf `sanity/env.ts`**
+- [x] **Step 5: Schrijf `sanity/env.ts`**
 
 ```typescript
 function assertValue(v: string | undefined, errorMessage: string): string {
@@ -97,7 +97,7 @@ export const dataset = assertValue(
 export const apiVersion = "2026-07-01";
 ```
 
-- [ ] **Step 6: Verifieer dat de build nog slaagt**
+- [x] **Step 6: Verifieer dat de build nog slaagt**
 
 ```bash
 npm run build
@@ -105,7 +105,7 @@ npm run build
 
 Expected: build slaagt (er is nog niets gewijzigd aan de app zelf).
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add package.json package-lock.json .env.example sanity/env.ts
@@ -131,7 +131,7 @@ Let op: `.env.local` mag NIET in de commit zitten (check `git status` — hoort 
 - Consumes: `projectId`, `dataset`, `apiVersion` uit `sanity/env.ts` (Task 1)
 - Produces: documenttype `siteInstellingen` met exact de veldnamen uit Global Constraints; `sanity.config.ts` default export voor de Studio; `sanity.cli.ts` zodat CLI-commando's (import, cors) zonder flags werken.
 
-- [ ] **Step 1: Schrijf het schema `sanity/schemaTypes/siteInstellingen.ts`**
+- [x] **Step 1: Schrijf het schema `sanity/schemaTypes/siteInstellingen.ts`**
 
 ```typescript
 import { defineField, defineType } from "sanity";
@@ -189,7 +189,7 @@ export const siteInstellingen = defineType({
 });
 ```
 
-- [ ] **Step 2: Schrijf `sanity/schemaTypes/index.ts`**
+- [x] **Step 2: Schrijf `sanity/schemaTypes/index.ts`**
 
 ```typescript
 import { siteInstellingen } from "./siteInstellingen";
@@ -197,7 +197,7 @@ import { siteInstellingen } from "./siteInstellingen";
 export const schemaTypes = [siteInstellingen];
 ```
 
-- [ ] **Step 3: Schrijf `sanity.config.ts` (root)**
+- [x] **Step 3: Schrijf `sanity.config.ts` (root)**
 
 Singleton-opzet: het document verschijnt als één vast item in de structuur, is niet aan te maken via "New document" en heeft een vast document-ID `siteInstellingen`.
 
@@ -244,7 +244,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 4: Schrijf `sanity.cli.ts` (root)**
+- [x] **Step 4: Schrijf `sanity.cli.ts` (root)**
 
 ```typescript
 import { defineCliConfig } from "sanity/cli";
@@ -259,7 +259,7 @@ export default defineCliConfig({
 
 Let op: de Sanity CLI leest `.env.local` niet automatisch in elke versie. Als een CLI-commando klaagt over een ontbrekend project-ID, prefix het commando dan met de vars, bv. `NEXT_PUBLIC_SANITY_PROJECT_ID=<id> NEXT_PUBLIC_SANITY_DATASET=production npx sanity ...`.
 
-- [ ] **Step 5: Schrijf `app/studio/[[...tool]]/page.tsx`**
+- [x] **Step 5: Schrijf `app/studio/[[...tool]]/page.tsx`**
 
 ```tsx
 import { NextStudio } from "next-sanity/studio";
@@ -274,7 +274,7 @@ export default function StudioPage() {
 }
 ```
 
-- [ ] **Step 6: Voeg de CORS-origin toe voor lokale ontwikkeling**
+- [x] **Step 6: Voeg de CORS-origin toe voor lokale ontwikkeling**
 
 ```bash
 npx sanity@latest cors add http://localhost:3000 --credentials
@@ -282,7 +282,7 @@ npx sanity@latest cors add http://localhost:3000 --credentials
 
 Expected: bevestiging dat de origin is toegevoegd. (Productie-domein volgt bij deploy — buiten scope.)
 
-- [ ] **Step 7: Verifieer dat de Studio laadt**
+- [x] **Step 7: Verifieer dat de Studio laadt**
 
 ```bash
 npm run build
@@ -300,7 +300,7 @@ curl -s http://localhost:3000/studio | grep -io "sanity" | head -1
 
 Expected: `sanity` (de studio-shell rendert). Stop de dev-server daarna weer. Volledige login-check in de browser gebeurt in Task 5.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add sanity/schemaTypes sanity.config.ts sanity.cli.ts "app/studio/[[...tool]]/page.tsx"
@@ -324,7 +324,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
   - `function mergeSiteContent(data: unknown): SiteContent` — merged Sanity-data per veld over de defaults; lege strings, lege arrays, `null` en `undefined` vallen terug op de default
   - `function spotifyEmbedUrl(link: string): string` — `https://open.spotify.com/show/X` → `https://open.spotify.com/embed/show/X?theme=0`
 
-- [ ] **Step 1: Schrijf de falende tests `sanity/lib/content.test.ts`**
+- [x] **Step 1: Schrijf de falende tests `sanity/lib/content.test.ts`**
 
 ```typescript
 import { describe, expect, it } from "vitest";
@@ -390,7 +390,7 @@ describe("spotifyEmbedUrl", () => {
 });
 ```
 
-- [ ] **Step 2: Draai de tests — ze moeten falen**
+- [x] **Step 2: Draai de tests — ze moeten falen**
 
 ```bash
 npx vitest run sanity/lib/content.test.ts
@@ -398,7 +398,7 @@ npx vitest run sanity/lib/content.test.ts
 
 Expected: FAIL — `content.ts` bestaat nog niet ("Failed to resolve import").
 
-- [ ] **Step 3: Schrijf `sanity/lib/content.ts`**
+- [x] **Step 3: Schrijf `sanity/lib/content.ts`**
 
 ```typescript
 export type SiteContent = {
@@ -501,7 +501,7 @@ export function spotifyEmbedUrl(link: string): string {
 }
 ```
 
-- [ ] **Step 4: Draai de tests — ze moeten slagen**
+- [x] **Step 4: Draai de tests — ze moeten slagen**
 
 ```bash
 npx vitest run sanity/lib/content.test.ts
@@ -509,7 +509,7 @@ npx vitest run sanity/lib/content.test.ts
 
 Expected: PASS, 6 tests groen.
 
-- [ ] **Step 5: Voeg een test-script toe aan `package.json`**
+- [x] **Step 5: Voeg een test-script toe aan `package.json`**
 
 In `package.json` onder `"scripts"`:
 
@@ -517,7 +517,7 @@ In `package.json` onder `"scripts"`:
 "test": "vitest run"
 ```
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add sanity/lib/content.ts sanity/lib/content.test.ts package.json
@@ -540,7 +540,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 - Consumes: `projectId`, `dataset`, `apiVersion` (Task 1); `SiteContent`, `DEFAULT_CONTENT`, `mergeSiteContent`, `spotifyEmbedUrl` (Task 3)
 - Produces: `async function getSiteContent(): Promise<SiteContent>` — de enige functie die `app/page.tsx` aanroept.
 
-- [ ] **Step 1: Schrijf `sanity/lib/client.ts`**
+- [x] **Step 1: Schrijf `sanity/lib/client.ts`**
 
 `useCdn: false` zodat de Next.js fetch-cache (met `revalidate: 60`) de enige cachelaag is — geen dubbele staleness via de Sanity-CDN.
 
@@ -557,7 +557,7 @@ export const client = createClient({
 });
 ```
 
-- [ ] **Step 2: Schrijf `sanity/lib/queries.ts`**
+- [x] **Step 2: Schrijf `sanity/lib/queries.ts`**
 
 ```typescript
 import { defineQuery } from "next-sanity";
@@ -567,7 +567,7 @@ export const SITE_CONTENT_QUERY = defineQuery(
 );
 ```
 
-- [ ] **Step 3: Schrijf `sanity/lib/getSiteContent.ts`**
+- [x] **Step 3: Schrijf `sanity/lib/getSiteContent.ts`**
 
 ```typescript
 import { client } from "./client";
@@ -593,7 +593,7 @@ export async function getSiteContent(): Promise<SiteContent> {
 }
 ```
 
-- [ ] **Step 4: Pas `app/page.tsx` aan**
+- [x] **Step 4: Pas `app/page.tsx` aan**
 
 Wijzigingen ten opzichte van de huidige file (regelnummers van vóór de wijziging):
 
@@ -667,7 +667,7 @@ Vervang in de JSX (zelfde structuur, alleen de databronnen):
 
 De lopende tekst in de podcast-sectie ("Elke zondag schuift een artiest aan…") en alle overige copy blijven letterlijk staan.
 
-- [ ] **Step 5: Verifieer met lege dataset (fallback-pad)**
+- [x] **Step 5: Verifieer met lege dataset (fallback-pad)**
 
 ```bash
 npm run build
@@ -684,7 +684,7 @@ curl -s http://localhost:3000 | grep -o "Ronnie Flex" | head -1
 
 Expected: `110K+` en `Ronnie Flex` (defaults zichtbaar). Stop de dev-server.
 
-- [ ] **Step 6: Draai alle tests en lint**
+- [x] **Step 6: Draai alle tests en lint**
 
 ```bash
 npm test && npm run lint
@@ -692,7 +692,7 @@ npm test && npm run lint
 
 Expected: tests PASS, lint zonder errors.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add sanity/lib/client.ts sanity/lib/queries.ts sanity/lib/getSiteContent.ts app/page.tsx
@@ -711,7 +711,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 **Interfaces:**
 - Consumes: documenttype `siteInstellingen` (Task 2); veldwaarden identiek aan `DEFAULT_CONTENT` (Task 3)
 
-- [ ] **Step 1: Schrijf `sanity/seed.ndjson`**
+- [x] **Step 1: Schrijf `sanity/seed.ndjson`**
 
 Eén regel NDJSON, document-ID vast op `siteInstellingen` (waarden identiek aan `DEFAULT_CONTENT`):
 
@@ -719,7 +719,7 @@ Eén regel NDJSON, document-ID vast op `siteInstellingen` (waarden identiek aan 
 {"_id":"siteInstellingen","_type":"siteInstellingen","stats":{"playlistVolgers":"110K+","instagramVolgers":"46K","aantalAfleveringen":"142+","afleveringMoment":"Zondag 15:00"},"gasten":["Boef","Ronnie Flex","Typhoon","Diggy Dex","Adje","Jack $hirak","Kevin","Willem","Jordymone9","Eljero Elia","Rotjoch","FRNKIE","p.APE","Jordan Wayne","Rosales","Sor"],"radio":{"dag":"Maandag","tijd":"19:00 – 21:00"},"links":{"instagram":"https://www.instagram.com/pass.de.aux/","tiktok":"https://www.tiktok.com/@pass.de.aux","youtube":"https://www.youtube.com/@PASSDEAUX","podcast":"https://open.spotify.com/show/0oX4c3DeilewS7spH9Fyfl","playlist":"https://open.spotify.com/playlist/4QZ4F2Yxc6RLx7ybP0Ozn4","glxy":"https://glxy.radio/shows/pass-de-aux/","ambassade":"https://ambassade.nl"}}
 ```
 
-- [ ] **Step 2: Importeer de seed in de production-dataset**
+- [x] **Step 2: Importeer de seed in de production-dataset**
 
 ```bash
 npx sanity@latest dataset import sanity/seed.ndjson production --replace
@@ -727,7 +727,7 @@ npx sanity@latest dataset import sanity/seed.ndjson production --replace
 
 Expected: `Done!` met 1 geïmporteerd document. Bij een project-ID-klacht: prefix met de env-vars (zie Task 2, Step 4).
 
-- [ ] **Step 3: Verifieer dat de data via de query binnenkomt**
+- [x] **Step 3: Verifieer dat de data via de query binnenkomt**
 
 ```bash
 npx sanity@latest documents get siteInstellingen
@@ -735,7 +735,7 @@ npx sanity@latest documents get siteInstellingen
 
 Expected: JSON van het document met alle velden gevuld.
 
-- [ ] **Step 4: End-to-end check op de homepage**
+- [x] **Step 4: End-to-end check op de homepage**
 
 ```bash
 npm run dev &
@@ -745,11 +745,11 @@ curl -s http://localhost:3000 | grep -o "110K+" | head -1
 
 Expected: `110K+` — nu afkomstig uit Sanity (zelfde waarde als default; dat de fetch echt slaagt is in Step 3 aangetoond, en de fallback-log "Sanity-fetch mislukt" mag NIET in de dev-server-output verschijnen).
 
-- [ ] **Step 5: Handmatige browser-verificatie (met gebruiker)**
+- [x] **Step 5: Handmatige browser-verificatie (met gebruiker)**
 
 Meld de gebruiker dat hij op `http://localhost:3000/studio` kan inloggen en bijvoorbeeld een gast kan toevoegen; na max. ~60s (na refresh) moet die op `http://localhost:3000` in de ticker staan. Dit is de acceptatietest uit de spec (verificatiepunt 3).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add sanity/seed.ndjson
