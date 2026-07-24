@@ -1,46 +1,21 @@
 import Image from "next/image";
 import AuxCable from "./components/AuxCable";
+import { getSiteContent } from "../sanity/lib/getSiteContent";
+import { spotifyEmbedUrl } from "../sanity/lib/content";
 
-const LINKS = {
-  instagram: "https://www.instagram.com/pass.de.aux/",
-  tiktok: "https://www.tiktok.com/@pass.de.aux",
-  youtube: "https://www.youtube.com/@PASSDEAUX",
-  podcast: "https://open.spotify.com/show/0oX4c3DeilewS7spH9Fyfl",
-  playlist: "https://open.spotify.com/playlist/4QZ4F2Yxc6RLx7ybP0Ozn4",
-  glxy: "https://glxy.radio/shows/pass-de-aux/",
-  ambassade: "https://ambassade.nl",
-};
-
-const GASTEN = [
-  "Boef",
-  "Ronnie Flex",
-  "Typhoon",
-  "Diggy Dex",
-  "Adje",
-  "Jack $hirak",
-  "Kevin",
-  "Willem",
-  "Jordymone9",
-  "Eljero Elia",
-  "Rotjoch",
-  "FRNKIE",
-  "p.APE",
-  "Jordan Wayne",
-  "Rosales",
-  "Sor",
-];
-
-function TickerGroep() {
+function TickerGroep({ gasten }: { gasten: string[] }) {
   return (
     <div className="ticker-groep">
-      {GASTEN.map((naam) => (
+      {gasten.map((naam) => (
         <span key={naam}>{naam}</span>
       ))}
     </div>
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const { stats, gasten, radio, links } = await getSiteContent();
+
   return (
     <div className="site">
       <AuxCable />
@@ -77,26 +52,26 @@ export default function Home() {
             </p>
 
             <div className="cta-row">
-              <a className="knop knop-vol" href={LINKS.podcast}>
+              <a className="knop knop-vol" href={links.podcast}>
                 Luister de podcast
               </a>
-              <a className="knop knop-lijn" href={LINKS.playlist}>
+              <a className="knop knop-lijn" href={links.playlist}>
                 Volg de playlist
               </a>
             </div>
 
             <ul className="stats mono">
               <li>
-                <strong>110K+</strong> playlist-volgers
+                <strong>{stats.playlistVolgers}</strong> playlist-volgers
               </li>
               <li>
-                <strong>46K</strong> op Instagram
+                <strong>{stats.instagramVolgers}</strong> op Instagram
               </li>
               <li>
-                <strong>142+</strong> afleveringen
+                <strong>{stats.aantalAfleveringen}</strong> afleveringen
               </li>
               <li>
-                <strong>Zondag 15:00</strong> nieuwe aflevering
+                <strong>{stats.afleveringMoment}</strong> nieuwe aflevering
               </li>
             </ul>
             </div>
@@ -114,15 +89,15 @@ export default function Home() {
 
         <div className="ticker" aria-hidden="true">
           <div className="ticker-baan">
-            <TickerGroep />
-            <TickerGroep />
+            <TickerGroep gasten={gasten} />
+            <TickerGroep gasten={gasten} />
           </div>
         </div>
 
         <section id="podcast" className="panel">
           <div className="panel-kop">
             <h2>De podcast</h2>
-            <span className="mono">Elke zondag — 15:00</span>
+            <span className="mono">{stats.afleveringMoment}</span>
           </div>
           <div className="panel-grid">
             <div className="panel-tekst">
@@ -136,13 +111,13 @@ export default function Home() {
                 Van gevestigde namen tot de nieuwe lichting: wie iets betekent
                 in de Nederlandse hiphop, komt hier aan de aux.
               </p>
-              <a className="tekst-link" href={LINKS.youtube}>
+              <a className="tekst-link" href={links.youtube}>
                 Kijk op YouTube →
               </a>
               <div className="gasten">
                 <p className="gasten-label mono">Aan de aux geweest</p>
                 <ul className="gasten-lijst">
-                  {GASTEN.map((naam) => (
+                  {gasten.map((naam) => (
                     <li key={naam}>{naam}</li>
                   ))}
                 </ul>
@@ -150,7 +125,7 @@ export default function Home() {
             </div>
             <div className="embed-kaart">
               <iframe
-                src="https://open.spotify.com/embed/show/0oX4c3DeilewS7spH9Fyfl?theme=0"
+                src={spotifyEmbedUrl(links.podcast)}
                 height="352"
                 loading="lazy"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -163,7 +138,7 @@ export default function Home() {
         <section id="playlist" className="panel">
           <div className="panel-kop">
             <h2>De playlist</h2>
-            <span className="mono">110K+ volgers</span>
+            <span className="mono">{stats.playlistVolgers} volgers</span>
           </div>
           <div className="panel-grid">
             <div className="panel-tekst">
@@ -177,13 +152,13 @@ export default function Home() {
                 Wekelijks ververst, scherp samengesteld. Sta je erop, dan weet
                 je dat het goed zit.
               </p>
-              <a className="tekst-link" href={LINKS.playlist}>
+              <a className="tekst-link" href={links.playlist}>
                 Volg op Spotify →
               </a>
             </div>
             <div className="embed-kaart">
               <iframe
-                src="https://open.spotify.com/embed/playlist/4QZ4F2Yxc6RLx7ybP0Ozn4?theme=0"
+                src={spotifyEmbedUrl(links.playlist)}
                 height="500"
                 loading="lazy"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -204,7 +179,7 @@ export default function Home() {
               Live
             </span>
             <p className="radio-tijd">
-              Maandag <em>19:00 – 21:00</em>
+              {radio.dag} <em>{radio.tijd}</em>
               <br />
               op GLXY.RADIO
             </p>
@@ -212,7 +187,7 @@ export default function Home() {
               Twee uur hiphop, r&b en de verhalen erachter — live vanuit de
               studio in Utrecht, online en via DAB+.
             </p>
-            <a className="tekst-link" href={LINKS.glxy}>
+            <a className="tekst-link" href={links.glxy}>
               Luister live →
             </a>
           </div>
@@ -227,22 +202,22 @@ export default function Home() {
             </h2>
             <ul className="sociale-lijst">
               <li>
-                <a href={LINKS.instagram}>Instagram</a>
+                <a href={links.instagram}>Instagram</a>
               </li>
               <li>
-                <a href={LINKS.tiktok}>TikTok</a>
+                <a href={links.tiktok}>TikTok</a>
               </li>
               <li>
-                <a href={LINKS.youtube}>YouTube</a>
+                <a href={links.youtube}>YouTube</a>
               </li>
               <li>
-                <a href={LINKS.podcast}>Spotify</a>
+                <a href={links.podcast}>Spotify</a>
               </li>
             </ul>
             <div className="kleine-print mono">
               <span>© 2026 Pass De Aux</span>
               <span>
-                Powered by <a href={LINKS.ambassade}>Ambassade</a>
+                Powered by <a href={links.ambassade}>Ambassade</a>
               </span>
             </div>
           </div>
