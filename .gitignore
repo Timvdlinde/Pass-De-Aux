@@ -44,5 +44,5 @@ next-env.d.ts
 .idea/
 .playwright-mcp/
 
-# Groot bronmateriaal — buiten git gehouden (te zwaar voor de repo; bewaar los / gebruik LFS indien nodig)
-docs/post-meeting/informatie-pass-de-aux/is voor later - PDA X PARRATV - BRAND DECK.pdf
+# Interne project-/klantdocs — buiten git (blijven lokaal, niet in de repo)
+docs/
