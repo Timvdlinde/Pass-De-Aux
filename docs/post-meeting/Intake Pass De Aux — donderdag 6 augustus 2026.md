@@ -289,12 +289,19 @@ beheeromgeving met uitleg hoe het werkt · SEO/GEO/pagespeed · livegang.
 Volledig uitgewerkt in
 [`prijsopgave-pass-de-aux-definitief.md`](prijsopgave-pass-de-aux-definitief.md).
 
+> **Dit blad is het verslag van 6 augustus.** Wat er ná de meeting binnenkwam
+> (`informatie-pass-de-aux/`) staat bewust níet hierin — dat is verwerkt in de
+> definitieve opgave en in
+> [`merken-pagina-content.md`](merken-pagina-content.md). Meerdere antwoorden
+> hierboven zijn daardoor inmiddels achterhaald; dat is de bedoeling.
+
 ## Open punten
 
-- [ ] **Wireframe homepage opleveren** — mobiel + desktop, uiterlijk do 13 aug
+Stand aan het eind van de meeting, vóór het aangeleverde materiaal:
+
 - [ ] **Derde paginasoort benoemen** — bepaalt of het €2.400 of €2.000 wordt
-- [ ] **Inhoud Merken-pagina** — volgt nog; blokkeert het ontwerp van die pagina
-- [ ] **Kleurrichting** — Jur levert de referenties aan; nodig voor ronde 2
+- [ ] **Inhoud Merken-pagina** — volgt nog
+- [ ] **Kleurrichting** — Jur levert de referenties aan
 - [ ] **Domeinnaam registreren** — nog niet gebeurd; op naam van Pass De Aux
 - [ ] **Registrar kiezen** — TransIP of Hostnet
 - [ ] **Hostingplatform kiezen** — hun rekening; Cloudflare gratis, Vercel Pro ±€19
@@ -302,6 +309,9 @@ Volledig uitgewerkt in
 - [ ] **Onderhoudscontract** — €40/maand, nog geen besluit
 - [ ] **Volgend contactmoment inplannen**
 - [ ] **Wie schrijft de teksten** — schrijven is meerwerk, redigeren zit in de prijs
+
+De actuele lijst staat in de definitieve opgave; een deel hiervan is met het
+aangeleverde materiaal al beantwoord.
 
 ---
 

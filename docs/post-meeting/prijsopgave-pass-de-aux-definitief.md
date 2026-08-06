@@ -13,18 +13,19 @@ blijft geldig; hieronder staat alleen nog de gekozen variant.
 
 | | |
 |---|---|
-| **Omvang** | 3 paginasoorten |
+| **Omvang** | 3 paginasoorten — twee vast, derde nog te bevestigen |
 | **CMS** | Ja — welk systeem wordt nog bepaald |
-| **Eenmalig** | **€2.400** |
+| **Eenmalig** | **€2.400** bij drie · **€2.000** bij twee |
 | **Onderhoud** | **€40/maand**, optioneel — vanaf livegang, maandelijks opzegbaar |
 | **Hosting & domein** | Rechtstreeks door Pass De Aux betaald, buiten mijn factuur |
 | **Live** | Q4 2026, rond de kerst |
 | **Materiaal** | Z.s.m. aanleveren — Jur |
 | **Contactpersoon** | Jur |
 
-> ⚠️ **De €2.400 gaat uit van drie paginasoorten. Er liggen er nu twee vast:
-> Home en Merken.** De derde is nog niet benoemd. Blijft het bij twee, dan wordt
-> het **€2.000** — zie *Open punten* onderaan.
+> ⚠️ **De €2.400 gaat uit van drie paginasoorten. Er liggen er twee vast: Home
+> en Merken.** De derde is in de meeting niet benoemd. Ik doe hieronder een
+> voorstel — het archief — maar zolang dat niet bevestigd is, is dit een opgave
+> voor twee paginasoorten en dan wordt het **€2.000**.
 
 ## De site
 
@@ -60,8 +61,16 @@ leidend bij het ontwerp. Wat er in ieder geval op komt:
 8. **Drop je demo**
 9. **Contact** — blok onderaan, geen eigen pagina
 
-De wekelijkse ritmiek (podcast, radio, playlist) is het onderdeel dat het
-vaakst ververst; dat wordt in het CMS het best beheerbaar ingericht.
+Plus een link-knop naar **Aux Media** — zie hieronder.
+
+De homepage is ook de hub uit jullie briefing: *"één plek waar iedere bezoeker
+door kan naar onze kanalen, in 1 of 2 klikken bij onze media."* Dat is een
+ontwerpeis, geen sectie — het bepaalt hoe elk blok eindigt.
+
+De wekelijkse ritmiek is het onderdeel dat het vaakst ververst en dus in het CMS
+komt. Dat zijn er vier, niet drie: podcast (zondag), live radio (maandag),
+freestyles (woensdag) en playlist (vrijdag). *Ralph Op Reportage* en
+festivalinterviews lopen op aanvraag.
 
 ### Paginasoort 2 — Merken
 
@@ -69,27 +78,77 @@ De pitch richting bookers en bedrijven, bereikbaar vanuit het menu én vanaf het
 proof-of-work-blok op de homepage. Aparte pagina omdat je 'm los moet kunnen
 doorsturen en 'm apart vindbaar wilt hebben.
 
-**De inhoud volgt nog, en dat blokkeert het ontwerp van deze pagina.** Een
-pitchpagina ontwerp ik niet zonder te weten wát er gepitcht wordt — welk aanbod,
-welke cijfers, welke cases. De homepage kan intussen wel vooruit.
+**De inhoud ligt er al.** Het information deck (`PDA - CIJFERS EN PRIJZEN.pdf`)
+is in feite deze pagina in PDF-vorm: bereikcijfers, kijkersprofiel, de zes
+formats, eerdere samenwerkingen en de volledige tarieflijst. Ik heb dat
+uitgewerkt in [`merken-pagina-content.md`](merken-pagina-content.md).
 
-### Paginasoort 3 — nog te bepalen
+**De tarieven gaan er niet op** — besloten. De pagina overtuigt op bereik,
+publiek en bewijs, en stuurt door naar het formulier. Prijzen blijven waar ze
+horen: in het gesprek. Dat past ook bij jullie eigen voorwaarde dat offertes
+dertig dagen geldig zijn.
 
-Nog niet vastgelegd. Kandidaten die in de meeting langskwamen: Radio/GLXY als
-eigen pagina, een afleveringenarchief, of Over Pass De Aux. De prijs hangt aan
-het *aantal*, niet aan welke het wordt — maar bij twee paginasoorten zakt het
-bedrag naar €2.000.
+Twee dingen die daar nog uit volgen:
 
-**De toets, per onderdeel — is één "ja" genoeg, dan verdient het een eigen
-pagina:**
+1. **De partnersectie wordt een verzendend formulier.** Dat stond niet in de
+   opgave — een formulier is functionaliteit, geen tekstblok. **Ik neem het
+   erbij zonder meerprijs**, zolang het één formulier is dat naar een mailadres
+   verstuurt. Wordt het een aanvraagflow met pakketkeuze en budgetvelden, dan is
+   dat een apart gesprek.
+2. **De bereikcijfers moeten in het CMS**, niet in de code. Ze verouderen elk
+   kwartaal, en het deck spreekt zichzelf al tegen op twee meetmomenten.
 
-- Wil je dit los aan iemand kunnen sturen?
-- Moet dit apart in Google gevonden worden?
-- Groeit dit elke maand aan?
+Ook uit het deck: er zijn **zes formats**, niet drie. *Ralph Op Reportage* en
+*festivalinterviews* staan nog nergens in de opzet.
 
-Op die derde vraag scoort een afleveringenarchief het hoogst: dat groeit
-wekelijks mee met de podcast en levert op termijn de meeste losse vindbaarheid
-op in Google.
+### Paginasoort 3 — voorstel: het archief
+
+In de meeting stond dit nog open, maar de informatie die daarna binnenkwam wijst
+één kant op. Uit `Pass-De-Aux_informatie.docx`:
+
+> *"een soort archief/tentoonstelling van alle soorten media die we maken +
+> randzaken er omheen"*
+
+Dat is een eigen paginasoort, en het is de enige kandidaat die op alle drie de
+toetsvragen "ja" scoort:
+
+| | Archief |
+|---|---|
+| Wil je dit los kunnen doorsturen? | Ja — per aflevering, per format |
+| Moet dit apart in Google gevonden worden? | Ja — dit is waar de losse vindbaarheid vandaan komt |
+| Groeit dit elke maand aan? | Ja — vier formats leveren wekelijks aan |
+
+**Wat erin komt:** alle zes de formats, doorzoekbaar en filterbaar — podcast,
+GLXY Radio Freestyles, Live Radio, festivalinterviews, Ralph Op Reportage en de
+Spotify-playlist. Dat is ook het onderdeel waar de hubfunctie uit de docx landt:
+in één of twee klikken van de site naar het kanaal waar je het bekijkt of
+beluistert.
+
+Bevestig dit en de €2.400 staat vast. Kiezen jullie er alsnog voor het bij twee
+paginasoorten te houden, dan wordt het €2.000 — maar dan moeten de zes formats
+allemaal op de homepage passen, en dat wordt krap.
+
+## Aux Media — dat is een tweede website, en die zit hier niet in
+
+Dit staat niet in de meeting-notities maar wel in de aangeleverde informatie, en
+het is te groot om onbenoemd te laten:
+
+> *"Idealiter hebben we 2 websites: Pass De Aux, en Aux Media. Deze zijn
+> verbonden door een link-knop, maar zijn wel 2 losstaande dingen."*
+
+Dat is precies goed gezien — Aux Media is een mediaproductiebedrijf dat podcasts
+maakt voor bedrijven, met een andere doelgroep en een ander verhaal. Dat hoort
+niet op deze site.
+
+**Wat er wél in de €2.400 zit:** de link-knop naar Aux Media, op zijn plek in het
+ontwerp. Dat is een knop, dat is klein, dat is inbegrepen.
+
+**Wat er niet in zit:** de site erachter. Dat is een eigen project met een eigen
+opgave — eigen paginasoorten, eigen ontwerp, eigen teksten. Ik noem dit nu zodat
+het geen "kan dit er nog even bij" wordt: dan is het namelijk allebei half.
+
+Zeg het als jullie er een indicatie voor willen; met een one-pager erbij is de
+opzet snel te schetsen. Maar het is een gesprek náást dit project, niet erin.
 
 ## Het CMS
 
@@ -248,9 +307,14 @@ maar het moet gezegd zijn.
 **Materiaal dat al klaarligt:** logo in vector, foto's van jullie, studiofoto's,
 episode-artwork, huisstijl-fonts, kleuren, rechten geregeld.
 
-**Nog nodig van jullie:** de teksten, de inhoud van de Merken-pagina, de
-socialslinks (Instagram, TikTok, YouTube, Spotify podcast + playlist, GLXY Radio,
-Ambassade), de kleurrichting, en toegang tot de DNS zodra het domein er is.
+**Al binnen:** het information deck met alle Merken-content, de "wie is Pass De
+Aux"-tekst, en vijf ontwerpreferenties (noahsark.nl, vigilante.group,
+researchdesignagency.com, pamidordesign.com, justus-john.com).
+
+**Nog nodig van jullie:** het besluit over openbare tarieven, de kleurkeuze op
+basis van die referenties, de socialslinks (Instagram, TikTok, YouTube, Spotify
+podcast + playlist, GLXY Radio, Ambassade, Aux Media), en toegang tot de DNS
+zodra het domein er is.
 
 ## Open punten
 
@@ -258,9 +322,9 @@ Dit staat nog niet vast en heeft een antwoord nodig voor de bouw begint:
 
 | Punt | Status | Consequentie |
 |---|---|---|
-| **Derde paginasoort** | Nog niet benoemd | Bepaalt of het €2.400 of €2.000 wordt |
-| **Inhoud Merken-pagina** | Volgt nog | Blokkeert het ontwerp van paginasoort 2 |
-| **Kleurrichting** | Jur levert de referenties aan | Blokkeert ontwerpronde 2; de wireframe kan wel door |
+| **Derde paginasoort** | Voorstel: het archief | Bevestigen, dan staat €2.400 vast |
+| **Aux Media-site** | Aparte opgave, nog niet gemaakt | Link-knop zit in de prijs, de site niet |
+| **Kleurrichting** | Vijf referenties binnen, keuze nog te maken | Blokkeert ontwerpronde 2; de wireframe kan door |
 | **Domeinnaam** | Nog niet geregistreerd | Snel doen — anders pakt iemand anders 'm |
 | **Registrar** | Nog te kiezen | TransIP of Hostnet |
 | **Hostingplatform** | Nog te kiezen | Jullie rekening; Cloudflare Pages is gratis, Vercel Pro ±€19/maand |
