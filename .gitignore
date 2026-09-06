@@ -46,3 +46,12 @@ next-env.d.ts
 
 # Interne project-/klantdocs — buiten git (blijven lokaal, niet in de repo)
 docs/
+
+# AI-tool configuratie (impeccable skill e.d.) — lokaal, niet in de repo
+.agent/
+.agents/
+.claude/
+.codex/
+.cursor/
+.gemini/
+.grok/
